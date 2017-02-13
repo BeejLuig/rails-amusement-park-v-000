@@ -7,9 +7,19 @@
     <%= csrf_meta_tags %>
     <%= analytics_init if Rails.env.production? %>
     <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet"></link>
+    <style>
+      td {
+        padding: 10px;
+        text-align: center;
+        border: 1px solid black;
+      }
+    </style>
   </head>
   <body>
     <%= render partial: 'layouts/navbar' %>
+    <div class="notice flash-notice">
+      <%= flash[:notice] %>
+    </div>
     <!-- content -->
     <div class="container"  role="main">
       <%= yield %>

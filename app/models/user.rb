@@ -12,4 +12,8 @@ class User < ActiveRecord::Base
       "neutral"
     end
   end
+
+  def admin?
+    self.admin
+  end
 end
