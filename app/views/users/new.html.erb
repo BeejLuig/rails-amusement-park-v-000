@@ -1,0 +1,8 @@
+<div class="container" role="main">
+  <h1>New user</h1>
+  <div class="flash">
+    <%= flash[:notice] %>
+  </div>
+  <%= render :partial => 'form', :locals => { user: User.new } %>
+  <a href="/users">Back</a>
+</div>
