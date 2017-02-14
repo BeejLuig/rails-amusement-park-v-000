@@ -11,6 +11,6 @@
     <p><strong>Mood: </strong><%= @user.mood %></p>
     <p><strong>Height: </strong><%= @user.height %> inches</p>
     <p><%= link_to "Edit", edit_user_path(@user) %></p>
-    <p><%= link_to "See attractions", attractions_path %></p>
+    <%= link_to "See attractions", attractions_path %>
   </div>
 </div>

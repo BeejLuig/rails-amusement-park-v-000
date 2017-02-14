@@ -21,7 +21,7 @@
           <%= link_to "Attractions", attractions_path %>
         </li>
         <li>
-          <%= link_to "Log Out", session_path(current_user), method: :delete %>
+          <%= link_to "Log Out", logout_path, method: :delete %>
         </li>
         <% else %>
           <li>

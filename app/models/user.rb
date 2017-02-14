@@ -4,12 +4,14 @@ class User < ActiveRecord::Base
   has_secure_password
 
   def mood
-    if happiness > nausea
-      "happy"
-    elsif happiness < nausea
-      "sad"
-    else
-      "neutral"
+    unless happiness.nil? || nausea.nil?
+      if happiness > nausea
+        "happy"
+      elsif happiness < nausea
+        "sad"
+      else
+        "neutral"
+      end
     end
   end
 

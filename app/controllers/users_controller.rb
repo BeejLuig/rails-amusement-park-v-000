@@ -28,6 +28,11 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find_by_id(params[:id])
+    unless logged_in? && (current_user == @user || current_user.admin? )
+      flash[:notice] = "Access denied."
+      redirect_to root_path
+    end
+
   end
 
   def destroy

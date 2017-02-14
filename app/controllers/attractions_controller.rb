@@ -3,47 +3,48 @@ class AttractionsController < ApplicationController
     @attractions = Attraction.all
   end
 
-  def create 
+  def create
     @attraction = Attraction.new(attraction_params)
-    if @attraction.save 
+    if @attraction.save
       flash[:notice] = "Attraction successfully created."
       redirect_to attraction_path(@attraction)
-    else 
+    else
       flash[:notice] = "Failed to create attraction."
       render :new
     end
-  end 
+  end
 
-  def new 
+  def new
     @attraction = Attraction.new
   end
 
-  def show 
+  def show
     @attraction = Attraction.find_by_id(params[:id])
+    @user = current_user
   end
 
-  def update 
+  def update
     @attraction = Attraction.find_by_id(params[:id])
     if @attraction.update(attraction_params)
       flash[:notice] = "Attraction successfully updated."
       redirect_to attraction_path(@attraction)
-    else 
+    else
       flash[:notice] = "Failed to update attraction."
       render :edit
     end
-  end 
+  end
 
-  def edit 
+  def edit
     @attraction = Attraction.find_by_id(params[:id])
-  end 
+  end
 
-  def destroy 
+  def destroy
     @attraction = Attraction.find_by_id(params[:id])
     @attraction.destroy
     redirect_to attractions_path
   end
 
-  private 
+  private
 
   def attraction_params
     params.require(:attraction).permit(:name, :min_height, :happiness_rating, :nausea_rating, :tickets)

@@ -11,8 +11,16 @@
     <p><strong>Height Requirement:</strong> <%= @attraction.min_height %></p>
     <p><strong>Nausea Rating:</strong> <%= @attraction.nausea_rating %></p>
     <p><strong>Happiness Rating:</strong> <%= @attraction.happiness_rating %></p>
-    
-    <p><%= link_to "Edit Attraction", edit_attraction_path(@attraction) if current_user.admin? %></p>
+
+    <% if current_user.admin? %>
+      <p><%= link_to "Edit Attraction", edit_attraction_path(@attraction) if current_user.admin? %></p>
+    <% else %>
+      <p><%= form_for Ride.new do |f| %>
+        <%= hidden_field_tag :user_id, @user.id %>
+        <%= hidden_field_tag :attraction_id, @attraction.id %>
+        <%= f.submit "Go on this ride "%>
+        <% end %></p>
+    <% end %>
     <p><a href="/attractions">Back</a></p>
   </div>
 </div>
